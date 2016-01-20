@@ -1,0 +1,10 @@
+{
+    "name": "fleet-api-demo",
+    "main": "server.js",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "^4.13.x",
+        "mongoose": "^4.3.x",
+        "body-parser": "^1.14.x"
+    }
+}
