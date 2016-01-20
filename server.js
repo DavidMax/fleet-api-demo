@@ -12,6 +12,14 @@ var port = process.env.PORT || 5000;
 // instantiate express router
 var router = express.Router();
 
+// setup express middleware
+router.use(function(req, res, next) {
+    // simulate server-side behavior for all routes
+    console.log('This simulates some server-side functionality.');
+    // continue to other routes
+    next();
+});
+
 // define routes
 
 router.get('/', function(req, res) {
