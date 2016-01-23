@@ -61,6 +61,55 @@ router.route('/vehicles')
         });
     });
 
+router.route('/vehicles/:vehicle_id')
+
+    // get vehicle by id
+    .get(function(req, res) {
+
+        // lookup vehicle in model based on param
+        Vehicle.findById(req.params.vehicle_id, function(err, vehicle) {
+            if (err) {
+                res.send(err);
+            }
+            // return vehicle object
+            res.json(vehicle);
+        });
+    })
+
+    // update vehicle by id
+    .put(function(req, res) {
+
+        // lookup vehicle in model based on param
+        Vehicle.findById(req.params.vehicle_id, function(err, vehicle) {
+            if (err) {
+                res.send(err);
+            }
+            // update vehicle name
+            vehicle.name = req.body.name;
+
+            // save the vehicle
+            vehicle.save(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json({ message: 'Vehicle has been updated!' });
+            });
+
+        });
+    })
+
+    // delete vehicle by id
+    .delete(function(req, res) {
+        Vehicle.remove({
+            _id: req.params.vehicle_id
+        }, function(err, vehicle) {
+            if (err) {
+                res.send(err);
+            }
+            res.json({ message: 'Vehicle has been deleted!' });
+        });
+    });
+
 // register routes
 app.use('/fleet-api', router);
 
