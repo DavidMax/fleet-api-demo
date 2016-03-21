@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Vehicle = require('./app/models/vehicles');
 
 // connect to database
-mongoose.connect('mongodb://fleetapiadmin:fleetapidemopass165k@ds047355.mongolab.com:47355/fleet-api-demo-db');
+mongoose.connect('mongodb://localhost/fleet-api-demo');
 
 // configure bodyParser()
 app.use(bodyParser.urlencoded({ extended: true }));
